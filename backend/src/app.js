@@ -20,7 +20,7 @@ app.use('/api/v1/tasks', require('./routes/taskRoutes'));
 app.use('/api/v1/admin', require('./routes/adminRoutes'));
 
 app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to Secure Task API System' });
+  res.json({ message: 'Secure Task API is running!', version: '1.0.0' });
 });
 
 // Error handling middleware (placeholder)
