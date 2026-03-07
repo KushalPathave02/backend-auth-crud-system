@@ -29,7 +29,14 @@ const Register = () => {
 
     try {
       const { data } = await API.post('/auth/register', formData);
-      login(data, data.token);
+      // data contains success, _id, name, email, role, token
+      const userData = {
+        _id: data._id,
+        name: data.name,
+        email: data.email,
+        role: data.role
+      };
+      login(userData, data.token);
       navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong');

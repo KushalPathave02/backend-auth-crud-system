@@ -20,7 +20,13 @@ const Login = () => {
 
     try {
       const { data } = await API.post('/auth/login', { email, password });
-      login(data, data.token);
+      const userData = {
+        _id: data._id,
+        name: data.name,
+        email: data.email,
+        role: data.role
+      };
+      login(userData, data.token);
       if (data.role === 'ADMIN') {
         navigate('/admin');
       } else {
